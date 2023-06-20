@@ -1,0 +1,75 @@
+@import '/src/styles/colors.scss';
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+}
+
+
+// .homeWrapper{
+//   display: flex;
+//   justify-content: center;
+
+//   padding: 1rem;
+//   height: 100%;
+
+//   background: rgb(2,0,36);
+//   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,36,29,1) 35%, rgba(82,182,148,1) 100%);
+// }
+
+// .home {
+//   display: flex;
+//   flex-direction: column;
+//   flex-grow: 1;
+
+//   // padding: 1rem 0 3rem;
+//   max-width: 700px;
+
+//   // border-top-left-radius: 20px;
+//   // border-top-right-radius: 20px;
+//   border-radius: 20px;
+//   background-color: $backgroundColorLightMint;
+//   // background-color: $mainTextColorWhite;
+// }
+
+// .buttons{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: stretch;
+
+//   gap: 1.5rem;
+//   height: 5rem;
+// }
+// .addCardButton, .editCardsButton, .cancelUpdatingButton {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-self: center;
+
+//   // margin: 1rem;
+//   padding: 1rem;
+//   width: 8rem;
+
+//   border: 1px solid $mainTextColorBlack;
+//   border-radius: 40px;
+//   font-weight: 600;
+//   color: $mainTextColorWhite;
+//   background-color: $mainTextColorGreen;
+
+//   cursor: pointer;
+// }
+
+// .cancelUpdatingButtonWrapper {
+//   display: flex;
+//   justify-content: center;
+
+//   width: 100%;
+
+//   background-color: $backgroundColorDarkMint;
+// }
+
+// .cancelUpdatingButton {
+//   color: $mainTextColorBlack;
+//   background-color: $backgroundColorLightMint;
+// }
