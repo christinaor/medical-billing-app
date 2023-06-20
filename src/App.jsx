@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+import AddBillForm from './containers/AddBillForm/AddBillForm.jsx';
+import Homepage from './containers/Homepage/Homepage.jsx';
+import NotFound from './containers/NotFound/NotFound.jsx';
 
-  return (
-    <>
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import './App.scss'
+
+export default function App() {
+  const [appLoaded, setAppLoaded] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleAddBill = () => {
+    //navigate to add bill form
+    console.log('Navigating to add bill form')
+    navigate('/add-new-bill')
+  }
+
+  useEffect(() => {
+    setAppLoaded(true);
+    // navigate('/', { replace: true })
+  }, [])
+
+  if (appLoaded) {
+    return (
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Homepage 
+                handleAddBill={handleAddBill}
+              />}
+          />
+          <Route
+            path='/add-new-bill'
+            element={<AddBillForm />}
+          />
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    )
+  } else {
+    return (
+      <div>Medical Billing App is loading...</div>
+    )
+  }
 }
-
-export default App
