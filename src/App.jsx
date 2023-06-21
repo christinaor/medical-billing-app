@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
+import { AddBillFormProvider } from './contexts/AddBillFormContext.jsx';
+
 import AddBillFormPage from './containers/AddBillFormPage/AddBillFormPage.jsx';
 import AddBillSummary from './containers/AddBillSummary/AddBillSummary.jsx';
 import Homepage from './containers/Homepage/Homepage.jsx';
@@ -29,6 +31,7 @@ export default function App() {
   if (appLoaded) {
     return (
       <div>
+        <AddBillFormProvider>
         <Routes>
           <Route
             path='/'
@@ -50,6 +53,7 @@ export default function App() {
             element={<NotFound />}
           />
         </Routes>
+        </AddBillFormProvider>
       </div>
     )
   } else {
