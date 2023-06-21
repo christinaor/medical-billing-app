@@ -1,0 +1,11 @@
+@import '/src/styles/colors.scss';
+
+// .addBillFormPage {
+
+// }
+
+.addBillForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+}

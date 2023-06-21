@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
-import AddBillForm from './containers/AddBillForm/AddBillForm.jsx';
+import AddBillFormPage from './containers/AddBillFormPage/AddBillFormPage.jsx';
+import AddBillSummary from './containers/AddBillSummary/AddBillSummary.jsx';
 import Homepage from './containers/Homepage/Homepage.jsx';
 import NotFound from './containers/NotFound/NotFound.jsx';
 
@@ -17,7 +18,7 @@ export default function App() {
   const handleAddBill = () => {
     //navigate to add bill form
     console.log('Navigating to add bill form')
-    navigate('/add-new-bill')
+    navigate('/add-new-bill');
   }
 
   useEffect(() => {
@@ -37,8 +38,12 @@ export default function App() {
               />}
           />
           <Route
+            path='/add-new-bill/summary'
+            element={<AddBillSummary />}
+          />
+          <Route
             path='/add-new-bill'
-            element={<AddBillForm />}
+            element={<AddBillFormPage />}
           />
           <Route
             path='*'
