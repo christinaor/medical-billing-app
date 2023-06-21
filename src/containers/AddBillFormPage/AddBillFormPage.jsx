@@ -1,22 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AddBillFormProvider, AddBillFormContext } from '../../contexts/AddBillFormContext.jsx';
+import { AddBillFormContext } from '../../contexts/AddBillFormContext.jsx';
 
 import Button from '../../components/Button/Button';
 
 import styles from './styles.module.scss';
 
 export default function AddBillFormPage() {
-  // const [newBill, setNewBill] = useState({
-  //   name: '',
-  //   address: '',
-  //   hospital: '',
-  //   serviceDate: '',
-  //   amount: '',
-  //   billUpload: '',
-  // });
-
   const navigate = useNavigate();
 
   const { billForm, updateBillForm } = useContext(AddBillFormContext);
