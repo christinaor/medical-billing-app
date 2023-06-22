@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import { AddBillFormContext } from '../../contexts/AddBillFormContext.jsx';
 
@@ -11,6 +12,27 @@ export default function AddBillFormPage() {
   const navigate = useNavigate();
 
   const { billForm, updateBillForm } = useContext(AddBillFormContext);
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = newBillData => {
+    updateBillForm(newBillData);
+    navigate('./summary');
+    console.log(newBillData);
+  };
+  console.log(errors);
+
+  const onCancel = () => {
+    updateBillForm({
+      name: '',
+      address: '',
+      hospital: '',
+      serviceDate: '',
+      amount: '',
+      // billUpload: '',
+    })
+    navigate('/');
+  }
 
   useEffect(() => {
     if (!billForm) {
@@ -27,60 +49,60 @@ export default function AddBillFormPage() {
   return (
     <div className={styles.addBillFormPage}>
       <h2>Add New Bill</h2>
+      <div>Fill out all fields.</div>
 
-      <form className={styles.addBillForm}>
+      <form className={styles.addBillForm} onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='name'>Name:</label>
         <input 
           name='name' 
-          type='text' 
-          value={billForm.name}
-          onChange={(e) => updateBillForm({ name: e.target.value })}
-          required
+          defaultValue={billForm.name}
+          type='text'
+          {...register('name', {value: billForm.name, required: true, maxLength: 100})}
         />
+        {errors.name && <span className={styles.error}>This field is required</span>}
 
         <label htmlFor='address'>Address:</label>
         <input
           name='address'
+          defaultValue={billForm.address}
           type='text'
-          value={billForm.address}
-          onChange={(e) => updateBillForm({ address: e.target.value })}
-          required
+          {...register('address', {required: true, maxLength: 120})}
         />
+        {errors.address && <span className={styles.error}>This field is required</span>}
 
         <label htmlFor='hospital'>Hospital:</label>
         <input
           name='hospital'
+          defaultValue={billForm.hospital}
           type='text'
-          value={billForm.hospital}
-          onChange={(e) => updateBillForm({ hospital: e.target.value })}
-          required
+          {...register('hospital', {required: true, maxLength: 150})}
         />
+        {errors.hospital && <span className={styles.error}>This field is required</span>}
 
         <label htmlFor='serviceDate'>Service Date:</label>
         <input
           name='serviceDate'
+          defaultValue={billForm.serviceDate}
           type='date'
-          value={billForm.serviceDate}
-          onChange={(e) => updateBillForm({ serviceDate: e.target.value })}
-          required
+          {...register('serviceDate', {required: true, maxLength: 12})}
         />
+        {errors.serviceDate && <span className={styles.error}>This field is required</span>}
 
         <label htmlFor='amount'>Bill Amount:</label>
         <input
           name='amount'
+          defaultValue={billForm.amount}
           type='number'
-          value={billForm.amount}
-          onChange={(e) => updateBillForm({ amount: e.target.value })}
-          required
+          {...register('amount', {required: true, maxLength: 15})}
         />
+        {errors.amount && <span className={styles.error}>This field is required</span>}
 
         {/* { Bill Upload option here } */}
+        <div className={styles.formButtons}>
+          <Button text='Review' type='submit' />
+          <Button text='Cancel' handleClick={onCancel} />
+        </div>
       </form>
-
-      <div className={styles.formButtons}>
-        <Button text='Review' handleClick={() => navigate('./summary')} />
-        <Button text='Cancel' handleClick={() => navigate('/')} />
-      </div>
     </div>
   )
 }
