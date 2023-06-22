@@ -1,11 +1,17 @@
+import { useContext, useEffect } from 'react';
+
+import { BillsContext } from '../../contexts/BillsContext.jsx';
+
 import medicalBillsData from '../../../data/medical-bills';
 
 import styles from './styles.module.scss';
 
 export default function BillsList() {
+  const { bills } = useContext(BillsContext);
+
   return (
     <ul className={styles.billsList}>
-      {medicalBillsData?.map(bill => (
+      {bills?.map(bill => (
         <li key={`medical-bill-${bill.id}`} className={styles.billsListItem}>
           <div>{bill.hospital}</div>
           <div>{bill.serviceDate}</div>

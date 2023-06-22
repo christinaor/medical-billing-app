@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AddBillFormProvider } from './contexts/AddBillFormContext.jsx';
+import { BillsProvider } from './contexts/BillsContext.jsx';
 
 import AddBillFormPage from './containers/AddBillFormPage/AddBillFormPage.jsx';
 import AddBillSummary from './containers/AddBillSummary/AddBillSummary.jsx';
 import Homepage from './containers/Homepage/Homepage.jsx';
 import NotFound from './containers/NotFound/NotFound.jsx';
 
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.scss'
 
 export default function App() {
@@ -31,29 +30,31 @@ export default function App() {
   if (appLoaded) {
     return (
       <div>
-        <AddBillFormProvider>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <Homepage 
-                handleAddBill={handleAddBill}
-              />}
-          />
-          <Route
-            path='/add-new-bill/summary'
-            element={<AddBillSummary />}
-          />
-          <Route
-            path='/add-new-bill'
-            element={<AddBillFormPage />}
-          />
-          <Route
-            path='*'
-            element={<NotFound />}
-          />
-        </Routes>
-        </AddBillFormProvider>
+        <BillsProvider>
+          <AddBillFormProvider>
+            <Routes>
+              <Route
+                path='/'
+                element={
+                  <Homepage 
+                    handleAddBill={handleAddBill}
+                  />}
+              />
+              <Route
+                path='/add-new-bill/summary'
+                element={<AddBillSummary />}
+              />
+              <Route
+                path='/add-new-bill'
+                element={<AddBillFormPage />}
+              />
+              <Route
+                path='*'
+                element={<NotFound />}
+              />
+            </Routes>
+          </AddBillFormProvider>
+        </BillsProvider>
       </div>
     )
   } else {
