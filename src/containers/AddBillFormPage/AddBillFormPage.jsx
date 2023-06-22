@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -9,11 +9,26 @@ import Button from '../../components/Button/Button';
 import styles from './styles.module.scss';
 
 export default function AddBillFormPage() {
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const navigate = useNavigate();
 
   const { billForm, updateBillForm } = useContext(AddBillFormContext);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const handleFileUpload = (uploadedFile) => {
+    const file = uploadedFile[0];
+    setSelectedFile(file);
+    console.log(file)
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageUrl = reader.result;
+      setSelectedFile(imageUrl);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const onSubmit = newBillData => {
     updateBillForm(newBillData);
@@ -46,6 +61,14 @@ export default function AddBillFormPage() {
     }
   }, [billForm, updateBillForm]);
 
+  useEffect(() => {
+    if (billForm.billUpload) {
+      handleFileUpload(billForm.billUpload);
+    }
+  }, [billForm.billUpload]);
+
+
+  // console.log(billForm.billUpload[0].name)
   return (
     <div className={styles.addBillFormPage}>
       <h2>Add New Bill</h2>
@@ -96,6 +119,22 @@ export default function AddBillFormPage() {
           {...register('amount', {required: true, maxLength: 15})}
         />
         {errors.amount && <span className={styles.error}>This field is required</span>}
+
+        <label htmlFor='billUpload'>Picture of Bill:</label>
+        <input
+          name='billUpload'
+          // defaultValue={billForm.billUpload[0]?.name || ''}
+          type='file'
+          // onChange={handleFileUpload}
+          {...register('billUpload', {required: true})}
+        />
+        {errors.billUpload && <span className={styles.error}>Bill upload is required</span>}
+        {/* {selectedFile && (
+          <div>
+            <h4>Selected Image:</h4>
+            <img src={selectedFile} alt="Selected" />
+          </div>
+        )} */}
 
         {/* { Bill Upload option here } */}
         <div className={styles.formButtons}>
