@@ -11,8 +11,8 @@ export default function BillsList() {
 
   return (
     <ul className={styles.billsList}>
-      {bills?.map(bill => (
-        <li key={`medical-bill-${bill.id}`} className={styles.billsListItem}>
+      {bills?.map((bill, index) => (
+        <li key={`medical-bill-${index}`} className={styles.billsListItem}>
           <div>{bill.hospital}</div>
           <div>{bill.serviceDate}</div>
           <div>{`$${bill.amount}`}</div>
