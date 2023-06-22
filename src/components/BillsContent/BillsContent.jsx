@@ -11,6 +11,7 @@ export default function BillsContent({ handleAddBill }) {
         handleClick={handleAddBill}
         text='+ Add Bill'
       />
+      <h2 className={styles.billsContentTitle}>Your Medical Bills</h2>
       <BillsList />
     </div>
   )

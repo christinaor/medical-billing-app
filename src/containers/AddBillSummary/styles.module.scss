@@ -12,7 +12,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 1rem;
-  padding: 1rem 0;
+  column-gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+
+  border-radius: 8px;
+  background-color: $backgroundColorLightGrey;
 }
 
 .addBillSummaryDetails label {
@@ -20,6 +25,10 @@
   display: flex;
   align-items: center;
   font-size: 0.9rem;
+}
+
+.addBillSummaryDetails div {
+  font-weight: 600;
 }
 
 .prompt {
