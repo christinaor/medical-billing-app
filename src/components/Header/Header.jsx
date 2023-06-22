@@ -2,8 +2,8 @@ import styles from './styles.module.scss';
 
 export default function Header() {
   return (
-    <div className={styles.header}>
-      Header
-    </div>
+    <h1 className={styles.header}>
+      Medical Billing App
+    </h1>
   )
 }

@@ -1,5 +1,10 @@
 @import '/src/styles/colors.scss';
 
 .header {
-  padding: 2rem 1rem;
+  padding: 1.5rem;
+
+  font-size: 1.5rem;
+
+  border-bottom: 1px solid $backgroundColorGrey;
+  box-shadow: 0 -6px 10px 5px $backgroundColorGrey;
 }

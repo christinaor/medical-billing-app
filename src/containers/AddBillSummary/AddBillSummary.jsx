@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button';
 
 import styles from './styles.module.scss';
 
-export default function AddBillPage() {
+export default function AddBillSummary() {
   const navigate = useNavigate();
 
   const { bills, updateBills } = useContext(BillsContext);
@@ -56,13 +56,19 @@ export default function AddBillPage() {
 
         <label>Amount Paid:</label>
         <div>${billForm.amount}</div>
+
+        <label>Uploaded Medical Bill:</label>
+        <div>{billForm.billUpload[0]?.name}</div>
       </div>
 
-      <div>Are you sure you want to submit this medical bill?</div>
+      <div className={styles.prompt}>Are you sure you want to submit this medical bill?</div>
 
-      <Button text='Submit' handleClick={onSubmit} />
-      <Button text='Edit' handleClick={() => navigate('/add-new-bill')} />
-      <Button text='Cancel' handleClick={onCancel} />
+      <div className={styles.addBillSummaryButtons}>
+        <Button className={styles.addBillSummaryButton} text='Submit' handleClick={onSubmit} />
+        <Button className={styles.addBillSummaryButton} text='Edit' handleClick={() => navigate('/add-new-bill')} />
+        <Button className={styles.addBillSummaryButton} text='Cancel' handleClick={onCancel} />
+      </div>
+      
     </section>
   )
 }

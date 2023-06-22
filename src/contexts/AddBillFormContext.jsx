@@ -16,8 +16,6 @@ const AddBillFormProvider = ({ children }) => {
     setBillForm({...billForm, ...updatedField});
   };
 
-  console.log(billForm)
-
   return (
     <AddBillFormContext.Provider value={{ billForm, updateBillForm }}>
       {children}

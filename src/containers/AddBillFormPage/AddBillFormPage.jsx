@@ -67,12 +67,10 @@ export default function AddBillFormPage() {
     }
   }, [billForm.billUpload]);
 
-
-  // console.log(billForm.billUpload[0].name)
   return (
     <div className={styles.addBillFormPage}>
       <h2>Add New Bill</h2>
-      <div>Fill out all fields.</div>
+      <div>Please fill out all fields.</div>
 
       <form className={styles.addBillForm} onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='name'>Name:</label>
@@ -82,7 +80,7 @@ export default function AddBillFormPage() {
           type='text'
           {...register('name', {value: billForm.name, required: true, maxLength: 100})}
         />
-        {errors.name && <span className={styles.error}>This field is required</span>}
+        {errors.name && <span className={styles.error}>Field required</span>}
 
         <label htmlFor='address'>Address:</label>
         <input
@@ -91,7 +89,7 @@ export default function AddBillFormPage() {
           type='text'
           {...register('address', {required: true, maxLength: 120})}
         />
-        {errors.address && <span className={styles.error}>This field is required</span>}
+        {errors.address && <span className={styles.error}>Field required</span>}
 
         <label htmlFor='hospital'>Hospital:</label>
         <input
@@ -100,7 +98,7 @@ export default function AddBillFormPage() {
           type='text'
           {...register('hospital', {required: true, maxLength: 150})}
         />
-        {errors.hospital && <span className={styles.error}>This field is required</span>}
+        {errors.hospital && <span className={styles.error}>Field required</span>}
 
         <label htmlFor='serviceDate'>Service Date:</label>
         <input
@@ -109,7 +107,7 @@ export default function AddBillFormPage() {
           type='date'
           {...register('serviceDate', {required: true, maxLength: 12})}
         />
-        {errors.serviceDate && <span className={styles.error}>This field is required</span>}
+        {errors.serviceDate && <span className={styles.error}>Field required</span>}
 
         <label htmlFor='amount'>Bill Amount:</label>
         <input
@@ -118,17 +116,18 @@ export default function AddBillFormPage() {
           type='number'
           {...register('amount', {required: true, maxLength: 15})}
         />
-        {errors.amount && <span className={styles.error}>This field is required</span>}
+        {errors.amount && <span className={styles.error}>Field required</span>}
 
-        <label htmlFor='billUpload'>Picture of Bill:</label>
+        <label htmlFor='billUpload'>Upload Bill:</label>
         <input
+          className={styles.billUploadInput}
           name='billUpload'
           // defaultValue={billForm.billUpload[0]?.name || ''}
           type='file'
           // onChange={handleFileUpload}
           {...register('billUpload', {required: true})}
         />
-        {errors.billUpload && <span className={styles.error}>Bill upload is required</span>}
+        {errors.billUpload && <span className={styles.error}>Upload required</span>}
         {/* {selectedFile && (
           <div>
             <h4>Selected Image:</h4>
@@ -136,7 +135,6 @@ export default function AddBillFormPage() {
           </div>
         )} */}
 
-        {/* { Bill Upload option here } */}
         <div className={styles.formButtons}>
           <Button text='Review' type='submit' />
           <Button text='Cancel' handleClick={onCancel} />

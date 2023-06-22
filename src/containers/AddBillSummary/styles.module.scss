@@ -1,11 +1,39 @@
 @import '/src/styles/colors.scss';
 
-// .addBillSummary {
+.addBillSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-// }
+  padding: 1.5rem;
+}
 
 .addBillSummaryDetails {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 1rem;
+  padding: 1rem 0;
+}
+
+.addBillSummaryDetails label {
+  grid-column: 1 / 2;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.prompt {
+  font-weight: 700;
+}
+
+.addBillSummaryButtons {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.addBillSummaryButton {
+  width: 6rem;
+
+  font-weight: 500;
 }
