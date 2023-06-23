@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 
 import { AddBillFormProvider } from './contexts/AddBillFormContext.jsx';
 import { BillsProvider } from './contexts/BillsContext.jsx';
@@ -33,8 +33,7 @@ export default function App() {
     if (user === 0) {
       navigate('/login', { replace: true });
     }
-    // navigate('/', { replace: true })
-  }, [])
+  }, [navigate, user])
 
   if (appLoaded) {
     return (
