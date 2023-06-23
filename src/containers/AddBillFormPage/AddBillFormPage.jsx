@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { AddBillFormContext } from '../../contexts/AddBillFormContext.jsx';
 
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button/Button.jsx';
 
 import styles from './styles.module.scss';
 

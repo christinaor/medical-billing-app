@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AddBillFormContext } from '../../contexts/AddBillFormContext.jsx';
 import { BillsContext } from '../../contexts/BillsContext.jsx';
 
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button/Button.jsx';
 
 import styles from './styles.module.scss';
 
