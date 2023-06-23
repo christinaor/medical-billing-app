@@ -1,4 +1,5 @@
 @import '/src/styles/colors.scss';
+@import '/src/styles/layout.scss';
 
 .header {
   padding: 1.5rem;
@@ -14,4 +15,18 @@
 .subtitle {
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+@media only screen and (min-width: $tablet-mid-start) {
+  .header {
+    padding: 1.5rem 2.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
 }

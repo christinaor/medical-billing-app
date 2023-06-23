@@ -1,7 +1,14 @@
 @import '/src/styles/colors.scss';
+@import '/src/styles/layout.scss';
 
 .homepage {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+@media only screen and (min-width: $tablet-mid-start) {
+  .homepage {
+    // align-items: center;
+  }
 }
