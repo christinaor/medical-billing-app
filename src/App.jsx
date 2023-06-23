@@ -1,20 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AddBillFormProvider } from './contexts/AddBillFormContext.jsx';
 import { BillsProvider } from './contexts/BillsContext.jsx';
+import { UserContext } from './contexts/UserContext.jsx';
 
 import AddBillFormPage from './containers/AddBillFormPage/AddBillFormPage.jsx';
 import AddBillSummary from './containers/AddBillSummary/AddBillSummary.jsx';
 import Homepage from './containers/Homepage/Homepage.jsx';
+import Login from './containers/Login/Login.jsx';
+import Register from './containers/Register/Register.jsx';
 import NotFound from './containers/NotFound/NotFound.jsx';
 
-import './App.scss'
+import './App.scss';
 
 export default function App() {
   const [appLoaded, setAppLoaded] = useState(false);
 
   const navigate = useNavigate();
+
+  const { user } = useContext(UserContext);
+  console.log(user)
 
   const handleAddBill = () => {
     //navigate to add bill form
@@ -24,6 +30,9 @@ export default function App() {
 
   useEffect(() => {
     setAppLoaded(true);
+    if (user === 0) {
+      navigate('/login', { replace: true });
+    }
     // navigate('/', { replace: true })
   }, [])
 
@@ -31,29 +40,40 @@ export default function App() {
     return (
       <div>
         <BillsProvider>
-          <AddBillFormProvider>
-            <Routes>
-              <Route
-                path='/'
-                element={
-                  <Homepage 
-                    handleAddBill={handleAddBill}
-                  />}
-              />
-              <Route
-                path='/add-new-bill/summary'
-                element={<AddBillSummary />}
-              />
-              <Route
-                path='/add-new-bill'
-                element={<AddBillFormPage />}
-              />
-              <Route
-                path='*'
-                element={<NotFound />}
-              />
-            </Routes>
-          </AddBillFormProvider>
+        <AddBillFormProvider>
+          <Routes>
+            
+            <Route
+              path='/'
+              element={
+                <Homepage 
+                  handleAddBill={handleAddBill}
+                />}
+            />
+            <Route
+              path='/add-new-bill/summary'
+              element={<AddBillSummary />}
+            />
+            <Route
+              path='/add-new-bill'
+              element={<AddBillFormPage />}
+            />
+            <Route
+              path='/login'
+              element={
+                <Login />}
+            />
+            <Route
+              path='/register'
+              element={
+                <Register />}
+            />
+            <Route
+              path='*'
+              element={<NotFound />}
+            />
+          </Routes>
+        </AddBillFormProvider>
         </BillsProvider>
       </div>
     )

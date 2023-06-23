@@ -58,7 +58,6 @@ module.exports = {
     static: {
       publicPath: '/build',
     },
-    // 
     proxy: {
       '/api': 'http://localhost:8888',
       '/authorize': 'http://localhost:8888'

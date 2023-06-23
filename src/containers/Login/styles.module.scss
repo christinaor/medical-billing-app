@@ -1,0 +1,60 @@
+@import '/src/styles/colors.scss';
+
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.loginDetails {
+  margin: auto;
+  padding: 2rem;;
+}
+
+.loginTitle {
+  margin-bottom: 2rem;
+  text-align: center;
+
+}
+
+.loginForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  max-width: 250px;
+  align-items: center;
+}
+
+.loginForm input {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  height: 2rem;
+
+  border-radius: 8px;
+  border: 1px solid $backgroundColorGrey;
+}
+
+.loginButton {
+  grid-column: 1 / 3;
+  margin: 1rem auto;
+  display: block;
+  width: 10rem;
+}
+
+.registerLink {
+  margin: 2rem 0;
+  text-align: center;
+  
+  cursor: pointer;
+}
+
+.registerLink:hover {
+  color: $linkHoverColorPurple;
+}
+
+.error {
+  grid-column: 1 / 3;
+  text-align: center;
+  color: $mainTextColorRed;
+}
